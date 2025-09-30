@@ -1,8 +1,6 @@
 package io.github.lorenzjosten.greps.io;
 
-import io.github.lorenzjosten.greps.model.value.CircleParameters;
-import io.github.lorenzjosten.greps.model.value.RectangleParameters;
-import io.github.lorenzjosten.greps.model.value.SquareParameters;
+import io.github.lorenzjosten.greps.model.value.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,62 +11,45 @@ public class ParameterParserImplTest {
     private final double[] ONE_PARAMETER = { 1 };
     private final double[] TWO_PARAMETERS = { 1, 2 };
 
-    private final IParameterParser parser = new ParameterParserImpl();
+    IParameterParser parser = new ParameterParserImpl();
 
     @Test
-    public void should_parse_no_parameter() {
-        assertDoesNotThrow(() -> parser.parse(NO_PARAMETER));
+    public void should_parse_square() {
+        IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(Shape.SQUARE, ONE_PARAMETER));
+
+        assertInstanceOf(SquareParameters.class, parameters);
+        assertEquals(1, ((SquareParameters) parameters).length());
     }
 
     @Test
-    public void should_parse_one_parameter() {
-        assertDoesNotThrow(() -> parser.parse(ONE_PARAMETER));
+    public void should_parse_rectangle() {
+        IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(Shape.RECTANGLE, TWO_PARAMETERS));
+
+        assertInstanceOf(RectangleParameters.class, parameters);
+        assertEquals(1, ((RectangleParameters) parameters).length());
+        assertEquals(2, ((RectangleParameters) parameters).width());
     }
 
     @Test
-    public void should_parse_two_parameters() {
-        assertDoesNotThrow(() -> parser.parse(TWO_PARAMETERS));
+    public void should_parse_circle() {
+        IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(Shape.CIRCLE, ONE_PARAMETER));
+
+        assertInstanceOf(CircleParameters.class, parameters);
+        assertEquals(1, ((CircleParameters) parameters).radius());
     }
 
     @Test
-    public void should_retrieve_square_parameters() {
-        parser.parse(ONE_PARAMETER);
-
-        assertEquals(new SquareParameters(1), parser.squareParameters());
+    public void should_throw_when_missing_square_parameters() {
+        assertThrows(IllegalArgumentException.class, () -> parser.parse(Shape.SQUARE, NO_PARAMETER));
     }
 
     @Test
-    public void should_retrieve_rectangle_parameters() {
-        assertDoesNotThrow(() -> parser.parse(TWO_PARAMETERS));
-
-        assertEquals(new RectangleParameters(1, 2), parser.rectangleParameters());
+    public void should_throw_when_missing_rectangle_parameters() {
+        assertThrows(IllegalArgumentException.class, () -> parser.parse(Shape.RECTANGLE, ONE_PARAMETER));
     }
 
     @Test
-    public void should_retrieve_circle_parameters() {
-        parser.parse(ONE_PARAMETER);
-
-        assertEquals(new CircleParameters(1), parser.circleParameters());
-    }
-
-    @Test
-    public void should_throw_when_null_square_parameters() {
-        parser.parse(NO_PARAMETER);
-
-        assertThrows(IllegalArgumentException.class, parser::squareParameters);
-    }
-
-    @Test
-    public void should_throw_when_null_rectangle_parameters() {
-        parser.parse(ONE_PARAMETER);
-
-        assertThrows(IllegalArgumentException.class, parser::rectangleParameters);
-    }
-
-    @Test
-    public void should_throw_when_null_circle_parameters() {
-        parser.parse(NO_PARAMETER);
-
-        assertThrows(IllegalArgumentException.class, parser::circleParameters);
+    public void should_throw_when_missing_circle_parameters() {
+        assertThrows(IllegalArgumentException.class, () -> parser.parse(Shape.CIRCLE, NO_PARAMETER));
     }
 }
