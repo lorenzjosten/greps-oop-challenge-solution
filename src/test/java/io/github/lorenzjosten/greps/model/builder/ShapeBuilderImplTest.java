@@ -12,27 +12,37 @@ public class ShapeBuilderImplTest {
 
     @Test
     public void should_create_circle() {
-        AShape circle = builder.type(Shape.CIRCLE).parameters(1).build();
+        CircleParameters parameters = new CircleParameters(1);
+        IShape circle = builder.type(Shape.CIRCLE).parameters(parameters).build();
 
         assertInstanceOf(Circle.class, circle);
     }
 
     @Test
     public void should_create_square() {
-        AShape square = builder.type(Shape.SQUARE).parameters(1).build();
+        SquareParameters parameters = new SquareParameters(1);
+        IShape square = builder.type(Shape.SQUARE).parameters(parameters).build();
 
         assertInstanceOf(Square.class, square);
     }
 
     @Test
     public void should_create_rectangle() {
-        AShape rectangle = builder.type(Shape.RECTANGLE).parameters(1, 1).build();
+        RectangleParameters parameters = new RectangleParameters(1, 2);
+        IShape rectangle = builder.type(Shape.RECTANGLE).parameters(parameters).build();
 
         assertInstanceOf(Rectangle.class, rectangle);
     }
 
     @Test
     public void should_throw_when_type_missing() {
-        assertThrows(IllegalArgumentException.class, builder::build);
+        IShapeParameters parameters = new SquareParameters(1);
+
+        assertThrows(IllegalArgumentException.class, () -> builder.parameters(parameters).build());
+    }
+
+    @Test
+    public void should_throw_when_parameters_missing() {
+        assertThrows(IllegalArgumentException.class, () -> builder.type(Shape.SQUARE).build());
     }
 }
