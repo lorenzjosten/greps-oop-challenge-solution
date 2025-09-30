@@ -1,25 +1,34 @@
 package io.github.lorenzjosten.greps.model.value;
 
-public class Rectangle extends AShape<RectangleParameters> {
-    public Rectangle(RectangleParameters parameters) {
+public class Rectangle extends AShape {
+    private static final int PARAMETER_COUNT = 2;
+    private static final int PARAMETER_INDEX_LENGTH = 0;
+    private static final int PARAMETER_INDEX_WIDTH = 1;
+
+    private double length;
+    private double width;
+
+    public Rectangle(double... parameters) {
         super(parameters);
     }
 
     @Override
     public double area() {
-        return getLength() * getWidth();
+        return this.length * this.width;
     }
 
     @Override
     public double perimeter() {
-        return 2 * getLength() + 2 * getWidth();
+        return 2 * this.length + 2 * this.width;
     }
 
-    public double getLength() {
-        return parameters.getLength();
-    }
+    @Override
+    protected void parse(double... parameters) throws IllegalArgumentException {
+        if (parameters.length < PARAMETER_COUNT) {
+            throw new IllegalArgumentException("Missing parameters length and width for rectangle.");
+        }
 
-    public double getWidth() {
-        return parameters.getWidth();
+        this.length = parameters[PARAMETER_INDEX_LENGTH];
+        this.width = parameters[PARAMETER_INDEX_WIDTH];
     }
 }
