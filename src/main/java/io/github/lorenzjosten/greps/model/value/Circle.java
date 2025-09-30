@@ -1,10 +1,8 @@
 package io.github.lorenzjosten.greps.model.value;
 
-public class Circle implements IShape {
-    private final double radius;
-
+public record Circle(double radius) implements IShape {
     public Circle(CircleParameters parameters) {
-        this.radius = parameters.radius();
+        this(parameters.radius());
     }
 
     @Override

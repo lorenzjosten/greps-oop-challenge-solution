@@ -1,12 +1,8 @@
 package io.github.lorenzjosten.greps.model.value;
 
-public class Rectangle implements IShape {
-    private final double length;
-    private final double width;
-
+public record Rectangle(double length, double width) implements IShape {
     public Rectangle(RectangleParameters parameters) {
-        this.length = parameters.length();
-        this.width = parameters.width();
+        this(parameters.length(), parameters.width());
     }
 
     @Override

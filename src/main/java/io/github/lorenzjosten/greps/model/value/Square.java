@@ -1,10 +1,8 @@
 package io.github.lorenzjosten.greps.model.value;
 
-public class Square implements IShape {
-    private final double length;
-
+public record Square(double length) implements IShape {
     public Square(SquareParameters parameters) {
-        this.length = parameters.length();
+        this(parameters.length());
     }
 
     @Override
