@@ -10,5 +10,5 @@ public abstract class AShape {
 
     public abstract double perimeter();
 
-    protected abstract void parse(double... parameters);
+    protected abstract void parse(double... parameters) throws IllegalArgumentException;
 }
