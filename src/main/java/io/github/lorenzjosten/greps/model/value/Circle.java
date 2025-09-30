@@ -6,7 +6,7 @@ public class Circle extends AShape {
 
     private double radius;
 
-    Circle(double... parameters) {
+    public Circle(double... parameters) {
         super(parameters);
     }
 
