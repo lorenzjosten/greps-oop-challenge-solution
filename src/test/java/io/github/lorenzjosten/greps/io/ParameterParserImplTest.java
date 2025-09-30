@@ -15,7 +15,7 @@ public class ParameterParserImplTest {
 
     @Test
     public void should_parse_rectangle_length() {
-        IParameterParser parser = new ParameterParserImpl(1);
+        IParameterParser parser = new ParameterParserImpl(1, 2);
 
         assertEquals(1, parser.getRectangleLength());
     }
