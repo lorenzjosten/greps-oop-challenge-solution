@@ -4,6 +4,7 @@ import io.github.lorenzjosten.greps.model.value.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ShapeBuilderImplTest {
 
@@ -28,5 +29,10 @@ public class ShapeBuilderImplTest {
         AShape rectangle = builder.type(Shape.RECTANGLE).parameters(1, 1).build();
 
         assertInstanceOf(Rectangle.class, rectangle);
+    }
+
+    @Test
+    public void should_throw_when_type_missing() {
+        assertThrows(IllegalArgumentException.class, builder::build);
     }
 }
