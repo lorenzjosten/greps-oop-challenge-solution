@@ -4,9 +4,9 @@ public class Rectangle implements IShape {
     private final double length;
     private final double width;
 
-    public Rectangle(double length, double width) {
-        this.length = length;
-        this.width = width;
+    public Rectangle(RectangleParameters parameters) {
+        this.length = parameters.length();
+        this.width = parameters.width();
     }
 
     @Override
