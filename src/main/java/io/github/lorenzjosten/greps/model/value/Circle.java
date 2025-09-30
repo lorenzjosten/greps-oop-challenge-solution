@@ -12,17 +12,21 @@ public class Circle extends AShape {
 
     @Override
     public double area() {
-        return 0;
+        return Math.PI * this.radius * this.radius;
     }
 
     @Override
     public double perimeter() {
-        return 0;
+        return 2 * Math.PI * this.radius;
     }
 
     @Override
     protected void parse(double... parameters) throws IllegalArgumentException {
+        if (parameters.length < PARAMETER_COUNT) {
+            throw new IllegalArgumentException("Missing parameter radius for circle.");
+        }
 
+        this.radius = parameters[PARAMETER_INDEX_RADIUS];
     }
 
 }
