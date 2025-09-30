@@ -13,3 +13,17 @@ The complexity of validating input and constructing objects from it is lifted ou
 ## Caveats
 
 Unit tests are not covering every line of code. 
+
+## Execution
+
+To run tests execute: 
+
+```bash
+./gradlew test
+```
+
+To run the main application execute: 
+
+```bash
+./gradlew run
+```
