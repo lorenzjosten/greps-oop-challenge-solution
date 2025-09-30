@@ -1,13 +1,14 @@
 package io.github.lorenzjosten.greps.model.value;
 
-public abstract class AShape<T extends AShapeParameters> {
-    protected final T parameters;
+public abstract class AShape {
 
-    AShape(T parameters) {
-        this.parameters = parameters;
+    AShape(double... parameters) {
+        parse(parameters);
     }
 
     public abstract double area();
 
     public abstract double perimeter();
+
+    protected abstract void parse(double... parameters) throws IllegalArgumentException;
 }
