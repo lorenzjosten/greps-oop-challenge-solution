@@ -1,32 +1,21 @@
 package io.github.lorenzjosten.greps.model.value;
 
-public class Circle extends AShape {
-    private final static int PARAMETER_COUNT = 1;
-    private final static int PARAMETER_INDEX_RADIUS = 0;
-
-    private double radius;
-
-    public Circle(double... parameters) {
+public class Circle extends AShape<CircleParameters> {
+    public Circle(CircleParameters parameters) {
         super(parameters);
     }
 
     @Override
     public double area() {
-        return Math.PI * this.radius * this.radius;
+        return Math.PI * getRadius();
     }
 
     @Override
     public double perimeter() {
-        return 2 * Math.PI * this.radius;
+        return 2 * Math.PI * getRadius();
     }
 
-    @Override
-    protected void parse(double... parameters) throws IllegalArgumentException {
-        if (parameters.length < PARAMETER_COUNT) {
-            throw new IllegalArgumentException("Missing parameter radius for circle.");
-        }
-
-        this.radius = parameters[PARAMETER_INDEX_RADIUS];
+    public double getRadius() {
+        return parameters.getRadius();
     }
-
 }
