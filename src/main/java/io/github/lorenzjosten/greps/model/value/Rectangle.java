@@ -14,16 +14,21 @@ public class Rectangle extends AShape {
 
     @Override
     public double area() {
-        return 0;
+        return this.length * this.width;
     }
 
     @Override
     public double perimeter() {
-        return 0;
+        return 2 * this.length + 2 * this.width;
     }
 
     @Override
     protected void parse(double... parameters) throws IllegalArgumentException {
+        if (parameters.length < PARAMETER_COUNT) {
+            throw new IllegalArgumentException("Missing parameters length and width for rectangle.");
+        }
 
+        this.length = parameters[PARAMETER_INDEX_LENGTH];
+        this.width = parameters[PARAMETER_INDEX_WIDTH];
     }
 }
