@@ -1,11 +1,15 @@
 package io.github.lorenzjosten.greps.io;
 
+import io.github.lorenzjosten.greps.model.value.CircleParameters;
+import io.github.lorenzjosten.greps.model.value.RectangleParameters;
+import io.github.lorenzjosten.greps.model.value.SquareParameters;
+
 public interface IParameterParser {
-    double getSquareLength();
+    SquareParameters squareParameters();
 
-    double getRectangleLength();
+    RectangleParameters rectangleParameters();
 
-    double getRectangleWidth();
+    CircleParameters circleParameters();
 
-    double getCircleRadius();
+    void parse(double... parameters);
 }
