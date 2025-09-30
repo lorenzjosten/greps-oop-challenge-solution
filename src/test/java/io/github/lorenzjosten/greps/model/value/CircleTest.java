@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CircleTest {
 
-    private final Circle circle = new Circle(1);
+    private final CircleParameters parameters = new CircleParameters(1);
+    private final Circle circle = new Circle(parameters);
 
     @Test
     public void should_calculate_area() {

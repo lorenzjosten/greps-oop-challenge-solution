@@ -6,7 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RectangleTest {
 
-    private final Rectangle rectangle = new Rectangle(1, 2);
+    private final RectangleParameters parameters = new RectangleParameters(1, 2);
+    private final Rectangle rectangle = new Rectangle(parameters);
 
     @Test
     public void should_calculate_area() {
