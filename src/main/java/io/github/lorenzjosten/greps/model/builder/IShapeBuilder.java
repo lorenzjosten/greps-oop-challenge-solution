@@ -1,13 +1,14 @@
 package io.github.lorenzjosten.greps.model.builder;
 
-import io.github.lorenzjosten.greps.model.value.AShape;
+import io.github.lorenzjosten.greps.io.IParameterParser;
+import io.github.lorenzjosten.greps.model.value.IShape;
 import io.github.lorenzjosten.greps.model.value.Shape;
 
 public interface IShapeBuilder {
 
-    public IShapeBuilder type(Shape shape);
+    IShapeBuilder type(Shape shape);
 
-    public IShapeBuilder parameters(double... parameters);
+    IShapeBuilder parameterParser(IParameterParser parser);
 
-    public AShape build();
+    IShape build();
 }
