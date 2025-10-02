@@ -3,7 +3,6 @@ package io.github.lorenzjosten.greps.model.factory;
 import io.github.lorenzjosten.greps.model.value.*;
 
 public class ShapeFactoryImpl implements IShapeFactory {
-    private IShapeParameters parameters;
 
     @Override
     public IShape create(IShapeParameters parameters) {
