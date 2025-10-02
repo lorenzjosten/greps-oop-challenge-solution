@@ -17,25 +17,27 @@ import io.github.lorenzjosten.greps.model.value.Shape;
 public final class ShapeMath {
     private static final IValidator validator = new ValidatorImpl();
     private static final IParameterParser parser = new ParameterParserImpl();
-    private static final IShapeFactory builder = new ShapeFactoryImpl();
+    private static final IShapeFactory factory = new ShapeFactoryImpl();
 
     private ShapeMath() {}
 
     public static double perimeter(Shape shape, double... parameters) {
-        Input input = new Input(shape, parameters);
+        IShapeParameters params = convertInput(shape, parameters);
 
-        return createShape(input).perimeter();
+        return factory.create(params).perimeter();
     }
 
     public static double area(Shape shape, double... parameters) {
-        Input input = new Input(shape, parameters);
+        IShapeParameters params = convertInput(shape, parameters);
 
-        return createShape(input).area();
+        return factory.create(params).area();
     }
 
-    private static IShape createShape(Input input) {
-        IShapeParameters shapeParameters = parser.parse(input);
+    private static IShapeParameters convertInput(Shape shape, double... parameters) {
+        Input input = new Input(shape, parameters);
 
-        return builder.parameters(shapeParameters).build();
+        validator.validate(input);
+
+        return parser.parse(input);
     }
 }
