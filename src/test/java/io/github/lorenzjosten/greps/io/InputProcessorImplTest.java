@@ -4,11 +4,9 @@ import io.github.lorenzjosten.greps.io.parser.IParameterParser;
 import io.github.lorenzjosten.greps.io.validation.IValidator;
 import io.github.lorenzjosten.greps.model.value.IShapeParameters;
 import io.github.lorenzjosten.greps.model.value.Input;
-import io.github.lorenzjosten.greps.model.value.SquareParameters;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static io.github.lorenzjosten.greps.model.value.Shape.SQUARE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -20,14 +18,15 @@ public class InputProcessorImplTest {
     @Test
     @DisplayName("Should process input")
     public void shouldProcessInput() {
+        Input input = mock();
         IShapeParameters params = mock();
 
-        when(parser.parse(any(Input.class))).thenReturn(params);
-        doNothing().when(validator).validate(any(Input.class));
+        when(parser.parse(input)).thenReturn(params);
+        doNothing().when(validator).validate(input);
 
-        assertEquals(params, processor.process(SQUARE, 1));
+        assertEquals(params, processor.process(input));
 
-        verify(validator, atLeastOnce()).validate(any(Input.class));
-        verify(parser, atLeastOnce()).parse(any(Input.class));
+        verify(validator, atLeastOnce()).validate(input);
+        verify(parser, atLeastOnce()).parse(input);
     }
 }
