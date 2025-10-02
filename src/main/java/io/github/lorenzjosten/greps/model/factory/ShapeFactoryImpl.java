@@ -21,4 +21,14 @@ public class ShapeFactoryImpl implements IShapeFactory {
             default -> throw new IllegalStateException("Unexpected value: " + parameters);
         };
     }
+
+    @Override
+    public IShape create(IShapeParameters parameters) {
+        return switch(parameters) {
+            case SquareParameters params -> new Square(params);
+            case RectangleParameters params -> new Rectangle(params);
+            case CircleParameters params -> new Circle(params);
+            default -> throw new IllegalStateException("Unexpected value: " + parameters);
+        };
+    }
 }
