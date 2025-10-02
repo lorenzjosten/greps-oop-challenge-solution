@@ -1,6 +1,7 @@
 package io.github.lorenzjosten.greps.io;
 
 import io.github.lorenzjosten.greps.model.value.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +15,8 @@ public class ParameterParserImplTest {
     IParameterParser parser = new ParameterParserImpl();
 
     @Test
-    public void should_parse_square() {
+    @DisplayName("Should parse square")
+    public void shouldParseSquare() {
         IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(Shape.SQUARE, ONE_PARAMETER));
 
         assertInstanceOf(SquareParameters.class, parameters);
@@ -22,7 +24,8 @@ public class ParameterParserImplTest {
     }
 
     @Test
-    public void should_parse_rectangle() {
+    @DisplayName("Should parse rectangle")
+    public void shouldParseRectangle() {
         IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(Shape.RECTANGLE, TWO_PARAMETERS));
 
         assertInstanceOf(RectangleParameters.class, parameters);
@@ -31,7 +34,8 @@ public class ParameterParserImplTest {
     }
 
     @Test
-    public void should_parse_circle() {
+    @DisplayName("Should parse circle")
+    public void shouldParseCircle() {
         IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(Shape.CIRCLE, ONE_PARAMETER));
 
         assertInstanceOf(CircleParameters.class, parameters);
@@ -39,17 +43,20 @@ public class ParameterParserImplTest {
     }
 
     @Test
-    public void should_throw_when_missing_square_parameters() {
+    @DisplayName("Should throw when missing square parameters")
+    public void shouldThrowWhenMissingSquareParameters() {
         assertThrows(IllegalArgumentException.class, () -> parser.parse(Shape.SQUARE, NO_PARAMETER));
     }
 
     @Test
-    public void should_throw_when_missing_rectangle_parameters() {
+    @DisplayName("Should throw when missing rectangle parameters")
+    public void shouldThrowWhenMissingRectangleParameters() {
         assertThrows(IllegalArgumentException.class, () -> parser.parse(Shape.RECTANGLE, ONE_PARAMETER));
     }
 
     @Test
-    public void should_throw_when_missing_circle_parameters() {
+    @DisplayName("Should throw when missing circle parameters")
+    public void shouldThrowWhenMissingCircleParameters() {
         assertThrows(IllegalArgumentException.class, () -> parser.parse(Shape.CIRCLE, NO_PARAMETER));
     }
 }
