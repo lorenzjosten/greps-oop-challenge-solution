@@ -17,6 +17,11 @@ public class ParameterParserImpl implements IParameterParser {
         };
     }
 
+    @Override
+    public IShapeParameters parse(Input input) {
+        return parse(input.type(), input.parameters());
+    }
+
     private SquareParameters parseSquare(double... parameters) {
         double length = parameters[PARAMETER_INDEX_SQUARE_LENGTH];
 
