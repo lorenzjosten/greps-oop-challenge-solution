@@ -1,4 +1,4 @@
-package io.github.lorenzjosten.greps.model.builder;
+package io.github.lorenzjosten.greps.model.factory;
 
 import io.github.lorenzjosten.greps.model.value.*;
 import org.junit.jupiter.api.DisplayName;
@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ShapeBuilderImplTest {
+public class ShapeFactoryImplTest {
 
-    private final IShapeBuilder builder = new ShapeBuilderImpl();
+    private final IShapeFactory builder = new ShapeFactoryImpl();
 
     @Test
     @DisplayName("Should create circle")

@@ -1,12 +1,12 @@
-package io.github.lorenzjosten.greps.model.builder;
+package io.github.lorenzjosten.greps.model.factory;
 
 import io.github.lorenzjosten.greps.model.value.*;
 
-public class ShapeBuilderImpl implements IShapeBuilder {
+public class ShapeFactoryImpl implements IShapeFactory {
     private IShapeParameters parameters;
 
     @Override
-    public IShapeBuilder parameters(IShapeParameters parameters) {
+    public IShapeFactory parameters(IShapeParameters parameters) {
         this.parameters = parameters;
 
         return this;

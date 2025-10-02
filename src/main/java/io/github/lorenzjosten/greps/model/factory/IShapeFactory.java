@@ -1,11 +1,11 @@
-package io.github.lorenzjosten.greps.model.builder;
+package io.github.lorenzjosten.greps.model.factory;
 
 import io.github.lorenzjosten.greps.model.value.IShape;
 import io.github.lorenzjosten.greps.model.value.IShapeParameters;
 
-public interface IShapeBuilder {
+public interface IShapeFactory {
 
-    IShapeBuilder parameters(IShapeParameters parameters);
+    IShapeFactory parameters(IShapeParameters parameters);
 
     IShape build();
 }
