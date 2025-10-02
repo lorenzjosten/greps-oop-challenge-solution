@@ -9,13 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ShapeFactoryImplTest {
 
-    private final IShapeFactory builder = new ShapeFactoryImpl();
+    private final IShapeFactory factory = new ShapeFactoryImpl();
+
+    private static final class UnknownShapeParameters implements IShapeParameters { }
 
     @Test
     @DisplayName("Should create circle")
     public void shouldCreateCircle() {
         CircleParameters parameters = new CircleParameters(1);
-        IShape circle = builder.parameters(parameters).build();
+        IShape circle = factory.create(parameters);
 
         assertInstanceOf(Circle.class, circle);
     }
@@ -24,7 +26,7 @@ public class ShapeFactoryImplTest {
     @DisplayName("Should create square")
     public void shouldCreateSquare() {
         SquareParameters parameters = new SquareParameters(1);
-        IShape square = builder.parameters(parameters).build();
+        IShape square = factory.create(parameters);
 
         assertInstanceOf(Square.class, square);
     }
@@ -33,14 +35,20 @@ public class ShapeFactoryImplTest {
     @DisplayName("Should create rectangle")
     public void shouldCreateRectangle() {
         RectangleParameters parameters = new RectangleParameters(1, 2);
-        IShape rectangle = builder.parameters(parameters).build();
+        IShape rectangle = factory.create(parameters);
 
         assertInstanceOf(Rectangle.class, rectangle);
     }
 
     @Test
-    @DisplayName("Should throw when parameters missing")
-    public void shouldThrowWhenParametersMissing() {
-        assertThrows(IllegalArgumentException.class, builder::build);
+    @DisplayName("Should throw when parameters null")
+    public void shouldThrowWhenParametersNull() {
+        assertThrows(IllegalArgumentException.class, () -> factory.create(null));
+    }
+
+    @Test
+    @DisplayName("Should throw when class unknown")
+    public void shouldThrowWhenClassUnknown() {
+        assertThrows(IllegalStateException.class, () -> factory.create(new UnknownShapeParameters()));
     }
 }
