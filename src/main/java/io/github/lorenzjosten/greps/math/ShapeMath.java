@@ -25,16 +25,16 @@ public final class ShapeMath {
     private ShapeMath() {}
 
     public static double perimeter(Shape shape, double... parameters) {
-        IShapeParameters parametersObj = processor.process(shape, parameters);
-        IShape shapeObj = factory.create(parametersObj);
-
-        return shapeObj.perimeter();
+        return createShape(shape, parameters).perimeter();
     }
 
     public static double area(Shape shape, double... parameters) {
-        IShapeParameters parametersObj = processor.process(shape, parameters);
-        IShape shapeObj = factory.create(parametersObj);
+        return createShape(shape, parameters).area();
+    }
 
-        return shapeObj.area();
+    private static IShape createShape(Shape shape, double... parameters) {
+        IShapeParameters parametersObj = processor.process(shape, parameters);
+
+        return factory.create(parametersObj);
     }
 }
