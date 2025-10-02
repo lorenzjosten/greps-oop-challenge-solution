@@ -23,4 +23,11 @@ public class InputProcessorImpl implements IInputProcessor {
 
         return parser.parse(input);
     }
+
+    @Override
+    public IShapeParameters process(Input input) {
+        validator.validate(input);
+
+        return parser.parse(input);
+    }
 }
