@@ -5,5 +5,5 @@ import io.github.lorenzjosten.greps.model.value.Shape;
 
 public interface IInputProcessor {
 
-    IShapeParameters process(Shape shape, double... args);
+    IShapeParameters process(Shape shape, double... parameters);
 }

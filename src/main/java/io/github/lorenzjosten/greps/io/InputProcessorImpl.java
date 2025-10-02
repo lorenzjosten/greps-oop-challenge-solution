@@ -3,6 +3,7 @@ package io.github.lorenzjosten.greps.io;
 import io.github.lorenzjosten.greps.io.parser.IParameterParser;
 import io.github.lorenzjosten.greps.io.validation.IValidator;
 import io.github.lorenzjosten.greps.model.value.IShapeParameters;
+import io.github.lorenzjosten.greps.model.value.Input;
 import io.github.lorenzjosten.greps.model.value.Shape;
 
 public class InputProcessorImpl implements IInputProcessor {
@@ -15,7 +16,11 @@ public class InputProcessorImpl implements IInputProcessor {
     }
 
     @Override
-    public IShapeParameters process(Shape shape, double... args) {
-        return null;
+    public IShapeParameters process(Shape shape, double... parameters) {
+        Input input = new Input(shape, parameters);
+
+        validator.validate(input);
+
+        return parser.parse(input);
     }
 }
