@@ -3,8 +3,7 @@ package io.github.lorenzjosten.greps.model.value;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InputTest {
 
@@ -67,5 +66,13 @@ public class InputTest {
         Input input = new Input(null, NEGATIVE_PARAMETERS);
 
         assertTrue(input.isNegative());
+    }
+
+    @Test
+    @DisplayName("Should get at index")
+    public void shouldGetAtIndex() {
+        Input input = new Input(null, TWO_PARAMETERS);
+
+        assertEquals(2, input.get(1));
     }
 }
