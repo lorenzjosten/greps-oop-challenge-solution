@@ -4,8 +4,8 @@ import io.github.lorenzjosten.greps.io.parser.IParameterParser;
 import io.github.lorenzjosten.greps.io.parser.ParameterParserImpl;
 import io.github.lorenzjosten.greps.io.validation.IValidator;
 import io.github.lorenzjosten.greps.io.validation.ValidatorImpl;
-import io.github.lorenzjosten.greps.model.builder.IShapeBuilder;
-import io.github.lorenzjosten.greps.model.builder.ShapeBuilderImpl;
+import io.github.lorenzjosten.greps.model.factory.IShapeFactory;
+import io.github.lorenzjosten.greps.model.factory.ShapeFactoryImpl;
 import io.github.lorenzjosten.greps.model.value.IShape;
 import io.github.lorenzjosten.greps.model.value.IShapeParameters;
 import io.github.lorenzjosten.greps.model.value.Input;
@@ -17,7 +17,7 @@ import io.github.lorenzjosten.greps.model.value.Shape;
 public final class ShapeMath {
     private static final IValidator validator = new ValidatorImpl();
     private static final IParameterParser parser = new ParameterParserImpl();
-    private static final IShapeBuilder builder = new ShapeBuilderImpl();
+    private static final IShapeFactory builder = new ShapeFactoryImpl();
 
     private ShapeMath() {}
 
@@ -36,6 +36,6 @@ public final class ShapeMath {
     private static IShape createShape(Input input) {
         IShapeParameters shapeParameters = parser.parse(input);
 
-        return builder.type(input.type()).parameters(shapeParameters).build();
+        return builder.parameters(shapeParameters).build();
     }
 }
