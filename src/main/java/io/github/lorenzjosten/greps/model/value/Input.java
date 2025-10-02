@@ -1,5 +1,7 @@
 package io.github.lorenzjosten.greps.model.value;
 
+import java.util.Arrays;
+
 public record Input(Shape type, double... parameters) {
 
     public boolean isSquare() {
@@ -16,6 +18,10 @@ public record Input(Shape type, double... parameters) {
 
     public boolean isShorterThan(int length) {
         return parameters.length < length;
+    }
+
+    public boolean isNegative() {
+        return Arrays.stream(parameters).anyMatch((double x) -> x < 0);
     }
 
 }
