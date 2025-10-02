@@ -15,7 +15,7 @@ public record Input(Shape type, double... parameters) {
     }
 
     public boolean isShorterThan(int length) {
-        return parameters.length <= length;
+        return parameters.length < length;
     }
 
 }
