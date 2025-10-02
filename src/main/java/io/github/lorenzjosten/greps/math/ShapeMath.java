@@ -1,5 +1,7 @@
 package io.github.lorenzjosten.greps.math;
 
+import io.github.lorenzjosten.greps.io.IInputProcessor;
+import io.github.lorenzjosten.greps.io.InputProcessorImpl;
 import io.github.lorenzjosten.greps.io.parser.IParameterParser;
 import io.github.lorenzjosten.greps.io.parser.ParameterParserImpl;
 import io.github.lorenzjosten.greps.io.validation.IValidator;
@@ -15,29 +17,24 @@ import io.github.lorenzjosten.greps.model.value.Shape;
  * Given by the challenge. Signatures should not be changed.
  */
 public final class ShapeMath {
-    private static final IValidator validator = new ValidatorImpl();
     private static final IParameterParser parser = new ParameterParserImpl();
+    private static final IValidator validator = new ValidatorImpl();
+    private static final IInputProcessor processor = new InputProcessorImpl(parser, validator);
     private static final IShapeFactory factory = new ShapeFactoryImpl();
 
     private ShapeMath() {}
 
     public static double perimeter(Shape shape, double... parameters) {
-        IShapeParameters params = convertInput(shape, parameters);
+        IShapeParameters parametersObj = processor.process(shape, parameters);
+        IShape shapeObj = factory.create(parametersObj);
 
-        return factory.create(params).perimeter();
+        return shapeObj.perimeter();
     }
 
     public static double area(Shape shape, double... parameters) {
-        IShapeParameters params = convertInput(shape, parameters);
+        IShapeParameters parametersObj = processor.process(shape, parameters);
+        IShape shapeObj = factory.create(parametersObj);
 
-        return factory.create(params).area();
-    }
-
-    private static IShapeParameters convertInput(Shape shape, double... parameters) {
-        Input input = new Input(shape, parameters);
-
-        validator.validate(input);
-
-        return parser.parse(input);
+        return shapeObj.area();
     }
 }
