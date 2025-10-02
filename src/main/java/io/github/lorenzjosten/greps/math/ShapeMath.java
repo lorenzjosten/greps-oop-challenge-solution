@@ -35,8 +35,8 @@ public final class ShapeMath {
     private static IShape createShape(Shape shape, double... parameters) {
         Input input = new Input(shape, parameters);
 
-        IShapeParameters parametersObj = processor.process(input);
+        IShapeParameters shapeParameters = processor.process(input);
 
-        return factory.create(parametersObj);
+        return factory.create(shapeParameters);
     }
 }
