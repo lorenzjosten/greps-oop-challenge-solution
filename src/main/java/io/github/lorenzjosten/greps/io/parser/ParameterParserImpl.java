@@ -11,27 +11,27 @@ public class ParameterParserImpl implements IParameterParser {
     @Override
     public IShapeParameters parse(Input input) {
         return switch (input.type()) {
-            case SQUARE -> parseSquare(input.parameters());
-            case RECTANGLE -> parseRectangle(input.parameters());
-            case CIRCLE -> parseCircle(input.parameters());
+            case SQUARE -> parseSquare(input);
+            case RECTANGLE -> parseRectangle(input);
+            case CIRCLE -> parseCircle(input);
         };
     }
 
-    private SquareParameters parseSquare(double... parameters) {
-        double length = parameters[PARAMETER_INDEX_SQUARE_LENGTH];
+    private SquareParameters parseSquare(Input input) {
+        double length = input.get(PARAMETER_INDEX_SQUARE_LENGTH);
 
         return new SquareParameters(length);
     }
 
-    private RectangleParameters parseRectangle(double... parameters) {
-        double length = parameters[PARAMETER_INDEX_RECTANGLE_LENGTH];
-        double width = parameters[PARAMETER_INDEX_RECTANGLE_WIDTH];
+    private RectangleParameters parseRectangle(Input input) {
+        double length = input.get(PARAMETER_INDEX_RECTANGLE_LENGTH);
+        double width = input.get(PARAMETER_INDEX_RECTANGLE_WIDTH);
 
         return new RectangleParameters(length, width);
     }
 
-    private CircleParameters parseCircle(double... parameters) {
-        double radius = parameters[PARAMETER_INDEX_CIRCLE_RADIUS];
+    private CircleParameters parseCircle(Input input) {
+        double radius = input.get(PARAMETER_INDEX_CIRCLE_RADIUS);
 
         return new CircleParameters(radius);
     }
