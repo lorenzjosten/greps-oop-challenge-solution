@@ -5,9 +5,5 @@ import io.github.lorenzjosten.greps.model.value.IShapeParameters;
 
 public interface IShapeFactory {
 
-    IShapeFactory parameters(IShapeParameters parameters);
-
-    IShape build();
-
     IShape create(IShapeParameters parameters);
 }

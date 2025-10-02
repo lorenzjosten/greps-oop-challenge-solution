@@ -6,25 +6,9 @@ public class ShapeFactoryImpl implements IShapeFactory {
     private IShapeParameters parameters;
 
     @Override
-    public IShapeFactory parameters(IShapeParameters parameters) {
-        this.parameters = parameters;
-
-        return this;
-    }
-
-    @Override
-    public IShape build() {
-        return switch(parameters) {
-            case SquareParameters params -> new Square(params);
-            case RectangleParameters params -> new Rectangle(params);
-            case CircleParameters params -> new Circle(params);
-            default -> throw new IllegalStateException("Unexpected value: " + parameters);
-        };
-    }
-
-    @Override
     public IShape create(IShapeParameters parameters) {
         return switch(parameters) {
+            case null -> throw new IllegalArgumentException("ShapeParameters must not be null.");
             case SquareParameters params -> new Square(params);
             case RectangleParameters params -> new Rectangle(params);
             case CircleParameters params -> new Circle(params);
