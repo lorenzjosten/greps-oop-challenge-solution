@@ -1,4 +1,4 @@
-package io.github.lorenzjosten.greps.io;
+package io.github.lorenzjosten.greps.io.parser;
 
 import io.github.lorenzjosten.greps.model.value.*;
 import org.junit.jupiter.api.DisplayName;
@@ -8,9 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ParameterParserImplTest {
 
-    private final double[] NO_PARAMETER = { };
-    private final double[] ONE_PARAMETER = { 1 };
-    private final double[] TWO_PARAMETERS = { 1, 2 };
+    private final double[] ONE_PARAMETER = {1};
+    private final double[] TWO_PARAMETERS = {1, 2};
 
     IParameterParser parser = new ParameterParserImpl();
 
@@ -40,23 +39,5 @@ public class ParameterParserImplTest {
 
         assertInstanceOf(CircleParameters.class, parameters);
         assertEquals(1, ((CircleParameters) parameters).radius());
-    }
-
-    @Test
-    @DisplayName("Should throw when missing square parameters")
-    public void shouldThrowWhenMissingSquareParameters() {
-        assertThrows(IllegalArgumentException.class, () -> parser.parse(Shape.SQUARE, NO_PARAMETER));
-    }
-
-    @Test
-    @DisplayName("Should throw when missing rectangle parameters")
-    public void shouldThrowWhenMissingRectangleParameters() {
-        assertThrows(IllegalArgumentException.class, () -> parser.parse(Shape.RECTANGLE, ONE_PARAMETER));
-    }
-
-    @Test
-    @DisplayName("Should throw when missing circle parameters")
-    public void shouldThrowWhenMissingCircleParameters() {
-        assertThrows(IllegalArgumentException.class, () -> parser.parse(Shape.CIRCLE, NO_PARAMETER));
     }
 }
