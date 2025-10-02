@@ -7,53 +7,78 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import io.github.lorenzjosten.greps.model.value.Input;
+
 public class ValidatorImplTest {
 
     private final double[] NO_PARAMETER = { };
     private final double[] ONE_PARAMETER = { 1 };
     private final double[] TWO_PARAMETERS = { 1, 2 };
+    private final double[] NEGATIVE_PARAMETERS = { 1, -2 };
 
     private final IValidator validator = new ValidatorImpl();
 
     @Test
     @DisplayName("Should not throw when square")
     public void shouldNotThrowWhenSquare() {
-        assertDoesNotThrow(() -> validator.validate(Shape.SQUARE, ONE_PARAMETER));
+        Input input = new Input(Shape.SQUARE, ONE_PARAMETER);
+
+        assertDoesNotThrow(() -> validator.validate(input));
     }
 
     @Test
     @DisplayName("Should not throw when rectangle")
     public void shouldNotThrowWhenRectangle() {
-        assertDoesNotThrow(() -> validator.validate(Shape.RECTANGLE, TWO_PARAMETERS));
+        Input input = new Input(Shape.RECTANGLE, TWO_PARAMETERS);
+
+        assertDoesNotThrow(() -> validator.validate(input));
     }
 
     @Test
     @DisplayName("Should not throw when circle")
     public void shouldNotThrowWhenCircle() {
-        assertDoesNotThrow(() -> validator.validate(Shape.CIRCLE, ONE_PARAMETER));
+        Input input = new Input(Shape.CIRCLE, ONE_PARAMETER);
+
+        assertDoesNotThrow(() -> validator.validate(input));
     }
 
     @Test
     @DisplayName("Should throw when type null")
     public void shouldThrowWhenTypeNull() {
-        assertThrows(IllegalArgumentException.class, () -> validator.validate(null, NO_PARAMETER));
+        Input input = new Input(null, NO_PARAMETER);
+
+        assertThrows(IllegalArgumentException.class, () -> validator.validate(input));
     }
 
     @Test
     @DisplayName("Should throw when missing square parameters")
     public void shouldThrowWhenMissingSquareParameters() {
-        assertThrows(IllegalArgumentException.class, () -> validator.validate(Shape.SQUARE, NO_PARAMETER));
+        Input input = new Input(Shape.SQUARE, NO_PARAMETER);
+
+        assertThrows(IllegalArgumentException.class, () -> validator.validate(input));
     }
 
     @Test
     @DisplayName("Should throw when missing rectangle parameters")
     public void shouldThrowWhenMissingRectangleParameters() {
-        assertThrows(IllegalArgumentException.class, () -> validator.validate(Shape.RECTANGLE, ONE_PARAMETER));
+        Input input = new Input(Shape.RECTANGLE, ONE_PARAMETER);
+
+        assertThrows(IllegalArgumentException.class, () -> validator.validate(input));
     }
 
     @Test
     @DisplayName("Should throw when missing circle parameters")
     public void shouldThrowWhenMissingCircleParameters() {
-        assertThrows(IllegalArgumentException.class, () -> validator.validate(Shape.CIRCLE, NO_PARAMETER));
+        Input input = new Input(Shape.CIRCLE, NO_PARAMETER);
+
+        assertThrows(IllegalArgumentException.class, () -> validator.validate(input));
+    }
+
+    @Test
+    @DisplayName("Should throw when negative parameters")
+    public void shouldThrowWhenNegativeParameters() {
+        Input input = new Input(Shape.CIRCLE, NEGATIVE_PARAMETERS);
+
+        assertThrows(IllegalArgumentException.class, () -> validator.validate(input));
     }
 }
