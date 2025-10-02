@@ -1,8 +1,6 @@
 package io.github.lorenzjosten.greps.io.validation;
 
-import io.github.lorenzjosten.greps.model.value.Shape;
-
-import static io.github.lorenzjosten.greps.model.value.Shape.*;
+import io.github.lorenzjosten.greps.model.value.Input;
 
 public class ValidatorImpl implements IValidator {
 
@@ -11,17 +9,20 @@ public class ValidatorImpl implements IValidator {
     private static final int PARAMETER_COUNT_RECTANGLE = 2;
 
     @Override
-    public void validate(Shape type, double... parameters) {
-        if (type == null) throw new IllegalArgumentException("Missing shape type.");
+    public void validate(Input input) {
+        if (input.type() == null) throw new IllegalArgumentException("Missing shape type.");
 
-        if (type == SQUARE && parameters.length < PARAMETER_COUNT_SQUARE)
+        if (input.isSquare() && input.isShorterThan(PARAMETER_COUNT_SQUARE))
             throw new IllegalArgumentException("Missing parameters for square.");
 
-        if (type == RECTANGLE && parameters.length < PARAMETER_COUNT_RECTANGLE)
+        if (input.isRectangle() && input.isShorterThan(PARAMETER_COUNT_RECTANGLE))
             throw new IllegalArgumentException("Missing parameters for rectangle.");
 
-        if (type == CIRCLE && parameters.length < PARAMETER_COUNT_CIRCLE)
+        if (input.isCircle() && input.isShorterThan(PARAMETER_COUNT_CIRCLE))
             throw new IllegalArgumentException("Missing parameters for circle.");
+
+        if (input.isNegative())
+            throw new IllegalArgumentException("Negative numbers not allowed.");
     }
 
 }

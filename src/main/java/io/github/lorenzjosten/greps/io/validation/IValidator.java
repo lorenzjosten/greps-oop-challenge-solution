@@ -1,8 +1,8 @@
 package io.github.lorenzjosten.greps.io.validation;
 
-import io.github.lorenzjosten.greps.model.value.Shape;
+import io.github.lorenzjosten.greps.model.value.Input;
 
 public interface IValidator {
 
-    void validate(Shape type, double... parameters);
+    void validate(Input input);
 }
