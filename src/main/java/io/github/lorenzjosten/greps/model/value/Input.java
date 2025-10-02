@@ -24,4 +24,7 @@ public record Input(Shape type, double... parameters) {
         return Arrays.stream(parameters).anyMatch((double x) -> x < 0);
     }
 
+    public double get(int index) {
+        return parameters[index];
+    }
 }
