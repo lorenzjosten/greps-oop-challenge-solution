@@ -15,7 +15,7 @@ public class ShapeBuilderImplTest {
     @DisplayName("Should create circle")
     public void shouldCreateCircle() {
         CircleParameters parameters = new CircleParameters(1);
-        IShape circle = builder.type(Shape.CIRCLE).parameters(parameters).build();
+        IShape circle = builder.parameters(parameters).build();
 
         assertInstanceOf(Circle.class, circle);
     }
@@ -24,7 +24,7 @@ public class ShapeBuilderImplTest {
     @DisplayName("Should create square")
     public void shouldCreateSquare() {
         SquareParameters parameters = new SquareParameters(1);
-        IShape square = builder.type(Shape.SQUARE).parameters(parameters).build();
+        IShape square = builder.parameters(parameters).build();
 
         assertInstanceOf(Square.class, square);
     }
@@ -33,22 +33,14 @@ public class ShapeBuilderImplTest {
     @DisplayName("Should create rectangle")
     public void shouldCreateRectangle() {
         RectangleParameters parameters = new RectangleParameters(1, 2);
-        IShape rectangle = builder.type(Shape.RECTANGLE).parameters(parameters).build();
+        IShape rectangle = builder.parameters(parameters).build();
 
         assertInstanceOf(Rectangle.class, rectangle);
     }
 
     @Test
-    @DisplayName("Should throw when type missing")
-    public void shouldThrowWhenTypeMissing() {
-        IShapeParameters parameters = new SquareParameters(1);
-
-        assertThrows(IllegalArgumentException.class, () -> builder.parameters(parameters).build());
-    }
-
-    @Test
     @DisplayName("Should throw when parameters missing")
     public void shouldThrowWhenParametersMissing() {
-        assertThrows(IllegalArgumentException.class, () -> builder.type(Shape.SQUARE).build());
+        assertThrows(IllegalArgumentException.class, builder::build);
     }
 }
