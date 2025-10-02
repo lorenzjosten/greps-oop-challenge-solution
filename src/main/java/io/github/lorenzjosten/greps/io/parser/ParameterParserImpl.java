@@ -9,17 +9,12 @@ public class ParameterParserImpl implements IParameterParser {
     private static final int PARAMETER_INDEX_CIRCLE_RADIUS = 0;
 
     @Override
-    public IShapeParameters parse(Shape type, double... parameters) {
-        return switch (type) {
-            case SQUARE -> parseSquare(parameters);
-            case RECTANGLE -> parseRectangle(parameters);
-            case CIRCLE -> parseCircle(parameters);
-        };
-    }
-
-    @Override
     public IShapeParameters parse(Input input) {
-        return parse(input.type(), input.parameters());
+        return switch (input.type()) {
+            case SQUARE -> parseSquare(input.parameters());
+            case RECTANGLE -> parseRectangle(input.parameters());
+            case CIRCLE -> parseCircle(input.parameters());
+        };
     }
 
     private SquareParameters parseSquare(double... parameters) {
