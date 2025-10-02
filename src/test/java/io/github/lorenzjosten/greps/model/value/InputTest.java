@@ -11,6 +11,7 @@ public class InputTest {
     private final double[] NO_PARAMETER = { };
     private final double[] ONE_PARAMETER = { 1 };
     private final double[] TWO_PARAMETERS = { 1, 2 };
+    private final double[] NEGATIVE_PARAMETERS = { 1, -2 };
 
     @Test
     @DisplayName("Should be square")
@@ -50,5 +51,21 @@ public class InputTest {
         Input input = new Input(null, TWO_PARAMETERS);
 
         assertFalse(input.isShorterThan(2));
+    }
+
+    @Test
+    @DisplayName("Should not be negative")
+    public void shouldNotBeNegative() {
+        Input input = new Input(null, TWO_PARAMETERS);
+
+        assertFalse(input.isNegative());
+    }
+
+    @Test
+    @DisplayName("Should be negative")
+    public void shouldBeNegative() {
+        Input input = new Input(null, NEGATIVE_PARAMETERS);
+
+        assertTrue(input.isNegative());
     }
 }
