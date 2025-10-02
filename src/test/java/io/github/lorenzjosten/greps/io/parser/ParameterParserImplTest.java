@@ -4,6 +4,9 @@ import io.github.lorenzjosten.greps.model.value.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static io.github.lorenzjosten.greps.model.value.Shape.SQUARE;
+import static io.github.lorenzjosten.greps.model.value.Shape.RECTANGLE;
+import static io.github.lorenzjosten.greps.model.value.Shape.CIRCLE;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParameterParserImplTest {
@@ -16,7 +19,8 @@ public class ParameterParserImplTest {
     @Test
     @DisplayName("Should parse square")
     public void shouldParseSquare() {
-        IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(Shape.SQUARE, ONE_PARAMETER));
+        Input input = new Input(SQUARE, ONE_PARAMETER);
+        IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(input));
 
         assertInstanceOf(SquareParameters.class, parameters);
         assertEquals(1, ((SquareParameters) parameters).length());
@@ -25,7 +29,8 @@ public class ParameterParserImplTest {
     @Test
     @DisplayName("Should parse rectangle")
     public void shouldParseRectangle() {
-        IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(Shape.RECTANGLE, TWO_PARAMETERS));
+        Input input = new Input(RECTANGLE, TWO_PARAMETERS);
+        IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(input));
 
         assertInstanceOf(RectangleParameters.class, parameters);
         assertEquals(1, ((RectangleParameters) parameters).length());
@@ -35,7 +40,8 @@ public class ParameterParserImplTest {
     @Test
     @DisplayName("Should parse circle")
     public void shouldParseCircle() {
-        IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(Shape.CIRCLE, ONE_PARAMETER));
+        Input input = new Input(CIRCLE, ONE_PARAMETER);
+        IShapeParameters parameters = assertDoesNotThrow(() -> parser.parse(input));
 
         assertInstanceOf(CircleParameters.class, parameters);
         assertEquals(1, ((CircleParameters) parameters).radius());
