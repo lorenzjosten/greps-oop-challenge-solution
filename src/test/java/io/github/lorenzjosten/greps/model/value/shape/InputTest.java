@@ -1,4 +1,4 @@
-package io.github.lorenzjosten.greps.model.value;
+package io.github.lorenzjosten.greps.model.value.shape;
 
 import io.github.lorenzjosten.greps.model.value.io.Input;
 import io.github.lorenzjosten.greps.model.value.io.Shape;

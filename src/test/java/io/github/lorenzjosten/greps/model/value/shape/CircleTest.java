@@ -1,6 +1,5 @@
-package io.github.lorenzjosten.greps.model.value;
+package io.github.lorenzjosten.greps.model.value.shape;
 
-import io.github.lorenzjosten.greps.model.value.shape.Circle;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
