@@ -1,4 +1,4 @@
 package io.github.lorenzjosten.greps.model.value;
 
-public interface IShapeParameters {
+public sealed interface IShapeParameters permits CircleParameters, SquareParameters, RectangleParameters {
 }

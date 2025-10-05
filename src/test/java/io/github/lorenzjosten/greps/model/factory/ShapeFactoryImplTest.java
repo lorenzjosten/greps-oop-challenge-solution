@@ -11,8 +11,6 @@ public class ShapeFactoryImplTest {
 
     private final IShapeFactory factory = new ShapeFactoryImpl();
 
-    private static final class UnknownShapeParameters implements IShapeParameters { }
-
     @Test
     @DisplayName("Should create circle")
     public void shouldCreateCircle() {
@@ -44,11 +42,5 @@ public class ShapeFactoryImplTest {
     @DisplayName("Should throw when parameters null")
     public void shouldThrowWhenParametersNull() {
         assertThrows(IllegalArgumentException.class, () -> factory.create(null));
-    }
-
-    @Test
-    @DisplayName("Should throw when class unknown")
-    public void shouldThrowWhenClassUnknown() {
-        assertThrows(IllegalStateException.class, () -> factory.create(new UnknownShapeParameters()));
     }
 }

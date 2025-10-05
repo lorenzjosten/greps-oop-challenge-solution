@@ -11,7 +11,6 @@ public class ShapeFactoryImpl implements IShapeFactory {
             case SquareParameters params -> new Square(params);
             case RectangleParameters params -> new Rectangle(params);
             case CircleParameters params -> new Circle(params);
-            default -> throw new IllegalStateException("Unexpected value: " + parameters);
         };
     }
 }

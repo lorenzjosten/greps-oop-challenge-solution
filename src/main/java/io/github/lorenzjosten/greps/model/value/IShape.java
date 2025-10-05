@@ -1,6 +1,6 @@
 package io.github.lorenzjosten.greps.model.value;
 
-public interface IShape {
+public sealed interface IShape permits Circle, Square, Rectangle {
 
     double area();
 
