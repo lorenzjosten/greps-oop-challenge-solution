@@ -1,4 +1,4 @@
-package io.github.lorenzjosten.greps.model.value;
+package io.github.lorenzjosten.greps.model.value.io;
 
 import java.util.Arrays;
 

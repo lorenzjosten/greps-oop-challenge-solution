@@ -1,5 +1,7 @@
 package io.github.lorenzjosten.greps.model.value;
 
+import io.github.lorenzjosten.greps.model.value.io.Input;
+import io.github.lorenzjosten.greps.model.value.io.Shape;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package io.github.lorenzjosten.greps.model.value;
+package io.github.lorenzjosten.greps.model.value.shape;
 
 public sealed interface IShape permits Circle, Square, Rectangle {
 

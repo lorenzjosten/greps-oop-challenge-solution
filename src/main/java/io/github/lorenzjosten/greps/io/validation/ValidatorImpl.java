@@ -1,6 +1,6 @@
 package io.github.lorenzjosten.greps.io.validation;
 
-import io.github.lorenzjosten.greps.model.value.Input;
+import io.github.lorenzjosten.greps.model.value.io.Input;
 
 public class ValidatorImpl implements IValidator {
 

@@ -1,4 +1,6 @@
-package io.github.lorenzjosten.greps.model.value;
+package io.github.lorenzjosten.greps.model.value.shape;
+
+import io.github.lorenzjosten.greps.model.value.shape.parameter.SquareParameters;
 
 public record Square(double length) implements IShape {
     public Square(SquareParameters parameters) {

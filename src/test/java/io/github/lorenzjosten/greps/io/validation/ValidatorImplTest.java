@@ -1,13 +1,13 @@
 package io.github.lorenzjosten.greps.io.validation;
 
-import io.github.lorenzjosten.greps.model.value.Shape;
+import io.github.lorenzjosten.greps.model.value.io.Shape;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import io.github.lorenzjosten.greps.model.value.Input;
+import io.github.lorenzjosten.greps.model.value.io.Input;
 
 public class ValidatorImplTest {
 

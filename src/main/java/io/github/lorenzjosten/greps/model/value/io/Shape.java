@@ -1,4 +1,4 @@
-package io.github.lorenzjosten.greps.model.value;
+package io.github.lorenzjosten.greps.model.value.io;
 
 /**
  * Given by the challenge. Should not be changed.

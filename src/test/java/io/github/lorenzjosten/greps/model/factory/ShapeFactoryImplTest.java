@@ -1,6 +1,12 @@
 package io.github.lorenzjosten.greps.model.factory;
 
-import io.github.lorenzjosten.greps.model.value.*;
+import io.github.lorenzjosten.greps.model.value.shape.Circle;
+import io.github.lorenzjosten.greps.model.value.shape.IShape;
+import io.github.lorenzjosten.greps.model.value.shape.Rectangle;
+import io.github.lorenzjosten.greps.model.value.shape.Square;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.CircleParameters;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.RectangleParameters;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.SquareParameters;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
 package io.github.lorenzjosten.greps;
 
 import io.github.lorenzjosten.greps.math.ShapeMath;
-import io.github.lorenzjosten.greps.model.value.Shape;
+import io.github.lorenzjosten.greps.model.value.io.Shape;
 
 public class Main {
     public static void main(String[] args) {

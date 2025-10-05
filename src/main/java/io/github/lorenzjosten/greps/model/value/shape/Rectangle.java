@@ -1,4 +1,6 @@
-package io.github.lorenzjosten.greps.model.value;
+package io.github.lorenzjosten.greps.model.value.shape;
+
+import io.github.lorenzjosten.greps.model.value.shape.parameter.RectangleParameters;
 
 public record Rectangle(double length, double width) implements IShape {
     public Rectangle(RectangleParameters parameters) {

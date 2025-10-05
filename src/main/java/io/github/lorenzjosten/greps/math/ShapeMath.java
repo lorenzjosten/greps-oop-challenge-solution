@@ -8,10 +8,10 @@ import io.github.lorenzjosten.greps.io.validation.IValidator;
 import io.github.lorenzjosten.greps.io.validation.ValidatorImpl;
 import io.github.lorenzjosten.greps.model.factory.IShapeFactory;
 import io.github.lorenzjosten.greps.model.factory.ShapeFactoryImpl;
-import io.github.lorenzjosten.greps.model.value.IShape;
-import io.github.lorenzjosten.greps.model.value.IShapeParameters;
-import io.github.lorenzjosten.greps.model.value.Input;
-import io.github.lorenzjosten.greps.model.value.Shape;
+import io.github.lorenzjosten.greps.model.value.shape.IShape;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.IShapeParameters;
+import io.github.lorenzjosten.greps.model.value.io.Input;
+import io.github.lorenzjosten.greps.model.value.io.Shape;
 
 /**
  * Given by the challenge. Signatures should not be changed.

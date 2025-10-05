@@ -1,6 +1,10 @@
 package io.github.lorenzjosten.greps.io.parser;
 
-import io.github.lorenzjosten.greps.model.value.*;
+import io.github.lorenzjosten.greps.model.value.io.Input;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.CircleParameters;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.IShapeParameters;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.RectangleParameters;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.SquareParameters;
 
 public class ParameterParserImpl implements IParameterParser {
     private static final int PARAMETER_INDEX_SQUARE_LENGTH = 0;

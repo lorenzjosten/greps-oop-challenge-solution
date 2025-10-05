@@ -1,12 +1,16 @@
 package io.github.lorenzjosten.greps.io.parser;
 
-import io.github.lorenzjosten.greps.model.value.*;
+import io.github.lorenzjosten.greps.model.value.io.Input;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.CircleParameters;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.IShapeParameters;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.RectangleParameters;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.SquareParameters;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static io.github.lorenzjosten.greps.model.value.Shape.SQUARE;
-import static io.github.lorenzjosten.greps.model.value.Shape.RECTANGLE;
-import static io.github.lorenzjosten.greps.model.value.Shape.CIRCLE;
+import static io.github.lorenzjosten.greps.model.value.io.Shape.SQUARE;
+import static io.github.lorenzjosten.greps.model.value.io.Shape.RECTANGLE;
+import static io.github.lorenzjosten.greps.model.value.io.Shape.CIRCLE;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParameterParserImplTest {

@@ -2,8 +2,8 @@ package io.github.lorenzjosten.greps.io;
 
 import io.github.lorenzjosten.greps.io.parser.IParameterParser;
 import io.github.lorenzjosten.greps.io.validation.IValidator;
-import io.github.lorenzjosten.greps.model.value.IShapeParameters;
-import io.github.lorenzjosten.greps.model.value.Input;
+import io.github.lorenzjosten.greps.model.value.shape.parameter.IShapeParameters;
+import io.github.lorenzjosten.greps.model.value.io.Input;
 
 public class InputProcessorImpl implements IInputProcessor {
     private final IParameterParser parser;
